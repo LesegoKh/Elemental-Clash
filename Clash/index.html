@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element Clash Game</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+       
+        body {
+            background-color: #6fafaf;
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 400;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+        
+        .emoji {
+            position: relative;
+            animation: float 4s ease-in-out forwards;
+            font-size: 2rem; 
+        }
+        
+        .element-button {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.2s;
+
+        }
+        #fire {
+            background-color:rgba(255, 0, 0, 0.541);
+        }
+        #fire:hover {
+            background-color:rgb(207, 12, 12);
+            opacity:1.1;
+        }
+        #water {
+            background-color: #007bffc0;
+        }
+        #water:hover {
+            background-color: #027cff;
+        }
+        #earth {
+            background-color: rgba(18, 114, 18, 0.76);
+        }
+        #earth:hover {
+            background-color: rgb(27, 102, 27);
+        }
+        #air {
+            background-color: rgb(250, 250, 250);
+        }
+        #air:hover {
+            background-color: rgba(250, 250, 250, 0.664);
+            color: #000000;
+        }
+        .element-button:hover {
+            transform: scale(1.1);
+            color:#c9dbee
+        }
+        .score-scale {
+            animation: scale-up 0.5s forwards;
+        }
+        @keyframes scale-up {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+        }
+        .flash {
+            animation: flash-animation 1s infinite;
+        }
+        @keyframes flash-animation {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        #resultsTable {
+            margin-top: 20px;
+            display: none; 
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1>Element Clash Game</h1>
+    <h6>Created & Conceptualized by: Lesego Khunou</h6>
+    <p>View more projects from my Repo here:<a href="https://github.com/LesegoKh" target="_blank">Visit GitHub</a></p>
+    <br>
+    <h5>Used concepts from these repo's to make a fully functional Game</h5>
+    <p>Build 1:<a href="https://lesegosite.s3.amazonaws.com/Welcome+User/Welcome+User.html">Custom Greeting & pop-up Modal in Bootstrap</a></p>
+    <p>Build 2:<a href="https://lesegosite.s3.amazonaws.com/ChngBkGrndCol/index.html">Color DApp- connects to Blockchain for verification before use</a></p>
+    <p>Build 3:<a href="https://lesegosite.s3.amazonaws.com/games/timedback/index.html">Time Warp</a></p>
+    <!-- Name Input Modal -->
+    <div class="modal fade" id="nameModal" tabindex="-1" aria-labelledby="nameModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6>Chose an Element to start play!</h6>
+                    <h5 class="modal-title" id="nameModalLabel">Enter Your Name</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="playerNameInput" class="form-control" placeholder="Your Name">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="submitNameButton" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="namePrompt" class="my-3"></div>
+
+    <div class="d-flex justify-content-center">
+        <div class="element-button" id="fire">🔥 Fire</div>
+        <div class="element-button" id="water">💧 Water</div>
+        <div class="element-button" id="earth">🌍 Earth</div>
+        <div class="element-button" id="air">💨 Air</div>
+    </div>
+
+    <div id="result" class="my-3"></div>
+    <div id="score" class="my-3">Score: Player 0 - Computer 0</div>
+    <div id="winnerDisplay" class="result-container my-3"></div>
+
+    <table id="resultsTable" class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Round</th>
+                <th>Player Choice</th>
+                <th>Computer Choice</th>
+                <th>Result</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+        </tbody>
+    </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="Clash.js"></script>
+</body>
+</html>
